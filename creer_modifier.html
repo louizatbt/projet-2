@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block title %} creer/modifier {% endblock %} {% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Save/Modify Text to File</title>
+</head>
+<body>
+  <h1>Save/Modify Text to File</h1>
+  <form action="save_text_to_file" method="POST">
+    <input type="text" name="file_name" placeholder="Enter file name" value="{{name}}" />
+    <button type="submit" class="btn btn-primary"value="Save/modify" name="1" > "creer/modifier" </button>
+
+    <textarea type="textarea" name="input_text" cols="60"placeholder="Enter text to save/modify"  >{{ text }}</textarea>
+    
+
+    <button type="submit" class="btn btn-primary"value="edit" name="1" > "edit" </button>
+
+
+
+    
+  </form>
+  <form>
+    <input type="text" id="newCheckboxName">
+    <button type="button" id="addCheckboxButton">Add Checkbox</button>
+    <ul id="checkboxList"></ul>
+  </form>
+  <script>
+    var addCheckboxButton = document.getElementById('addCheckboxButton');
+    addCheckboxButton.addEventListener('click', function() {
+      var checkboxName = document.getElementById('newCheckboxName').value;
+      var checkboxList = document.getElementById('checkboxList');
+      var checkboxItem = document.createElement('li');
+      var checkbox = document.createElement('input');
+      checkbox.type = "checkbox";
+      checkbox.id = checkboxName;
+      checkbox.name = checkboxName;
+      checkbox.value = "newValue";
+      var label = document.createElement('label');
+      label.for = checkboxName;
+      label.innerHTML = checkboxName;
+      var button = document.createElement('button');
+      button.innerHTML = "Delete";
+      button.addEventListener('click', function(){
+      checkboxList.removeChild(checkboxItem);
+      });
+      checkboxItem.appendChild(checkbox);
+      checkboxItem.appendChild(label);
+      checkboxItem.appendChild(button);
+      checkboxList.appendChild(checkboxItem);
+    });
+  </script> 
+</body>
+</html>
+
+{% endblock %}
